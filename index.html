@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101010">
+  <title>ERIC BOOKS — Vos histoires, votre bibliothèque</title>
+  <style>
+    :root{--bg:#0d0d0e;--panel:#171719;--gold:#d6ad55;--gold2:#f0d38a;--text:#f7f3e9;--muted:#aaa49a}
+    *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+    header{position:sticky;top:0;z-index:5;background:#101010ed;border-bottom:1px solid #3b3221;backdrop-filter:blur(10px)}
+    .nav{max-width:1100px;margin:auto;padding:17px 22px;display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .brand{font-family:Georgia,serif;font-size:24px;letter-spacing:2px;color:var(--gold2);font-weight:bold}
+    .nav a{color:var(--text);text-decoration:none;font-size:14px;margin-left:18px}
+    .hero{max-width:1100px;margin:auto;padding:76px 22px 58px;display:grid;grid-template-columns:1.2fr .8fr;gap:30px;align-items:center}
+    .eyebrow{color:var(--gold);letter-spacing:3px;text-transform:uppercase;font-size:12px}
+    h1{font-family:Georgia,serif;font-size:clamp(42px,7vw,70px);line-height:1.02;margin:15px 0}
+    h1 span{color:var(--gold2)} .hero p{color:var(--muted);font-size:17px;line-height:1.7;max-width:570px}
+    .button{display:inline-block;border:0;border-radius:5px;padding:13px 19px;background:var(--gold);color:#17120a;font-weight:bold;text-decoration:none;cursor:pointer}
+    .button.secondary{background:transparent;border:1px solid var(--gold);color:var(--gold2)}
+    .hero-art{min-height:290px;border:1px solid #5b4827;border-radius:12px;background:radial-gradient(circle at 50% 40%,#4b3a1c,#171511 55%,#101010 78%);display:flex;align-items:center;justify-content:center;padding:25px}
+    .book{width:180px;height:245px;background:linear-gradient(135deg,#302416,#090909);border:2px solid var(--gold);box-shadow:15px 18px 28px #0009;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:15px;transform:rotate(-5deg)}
+    .book small{color:var(--gold);letter-spacing:3px}.book strong{font: bold 28px Georgia,serif;margin:18px 0}.book em{font:italic 12px Georgia;color:#d9c9a4}
+    .section{max-width:1100px;margin:auto;padding:30px 22px 65px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}
+    h2{font: bold 32px Georgia,serif;margin:0}.section-head p{color:var(--muted);margin:8px 0 0}
+    .tools{display:flex;gap:10px;margin:20px 0 25px}
+    input{width:100%;padding:13px 14px;background:#19191b;border:1px solid #51452e;border-radius:5px;color:white;font-size:15px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--panel);border:1px solid #35302a;border-radius:9px;overflow:hidden}
+    .cover{height:220px;background:linear-gradient(145deg,#4b381b,#17130d 65%);display:flex;align-items:center;justify-content:center;padding:20px}
+    .cover-inner{height:175px;width:125px;border:1px solid var(--gold);display:flex;align-items:center;justify-content:center;text-align:center;font: bold 22px Georgia;color:var(--gold2);padding:12px;box-shadow:8px 9px 20px #0008}
+    .card-body{padding:17px}.card h3{font: bold 21px Georgia;margin:0 0 8px}.card p{color:var(--muted);font-size:14px;line-height:1.5;min-height:42px}
+    .price{color:var(--gold2);font-weight:bold;margin:13px 0}
+    .actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{font-size:13px;padding:10px 12px}
+    .notice{border:1px solid #4a3b20;background:#19160f;color:#d9c99f;padding:15px;border-radius:7px;line-height:1.5;margin-top:25px;font-size:13px}
+    footer{border-top:1px solid #332b1d;text-align:center;color:var(--muted);padding:28px 15px;font-size:13px}
+    dialog{background:#19191b;color:var(--text);border:1px solid var(--gold);border-radius:9px;max-width:500px;width:calc(100% - 30px);padding:24px}
+    dialog::backdrop{background:#000b} dialog h3{font:26px Georgia;color:var(--gold2);margin-top:0} dialog p{color:#c7c0b4;line-height:1.6}
+    .close{float:right;background:transparent;color:var(--gold2);border:1px solid #66532f;padding:7px 10px;border-radius:4px}
+    @media(max-width:720px){.hero{grid-template-columns:1fr;padding-top:48px}.hero-art{min-height:250px}.grid{grid-template-columns:1fr 1fr}.nav a{margin-left:8px}.brand{font-size:20px}}
+    @media(max-width:480px){.grid{grid-template-columns:1fr}.section-head{display:block}.nav{padding:14px}.nav a{font-size:12px}}
+  </style>
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="brand">ERIC BOOKS</div>
+    <div><a href="#catalogue">Catalogue</a><a href="#apropos">À propos</a></div>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Librairie numérique</div>
+      <h1>Chaque livre ouvre <span>un monde.</span></h1>
+      <p>Découvrez des histoires captivantes, explorez les premières pages et retrouvez vos romans préférés en version numérique.</p>
+      <a class="button" href="#catalogue">Explorer les romans</a>
+      <a class="button secondary" href="#apropos">En savoir plus</a>
+    </div>
+    <div class="hero-art" aria-label="Illustration décorative d'un livre">
+      <div class="book"><small>ERIC BOOKS</small><strong>VOTRE<br>PROCHAIN<br>VOYAGE</strong><em>Une histoire vous attend</em></div>
+    </div>
+  </section>
+
+  <section class="section" id="catalogue">
+    <div class="section-head">
+      <div><div class="eyebrow">La bibliothèque</div><h2>Nos romans</h2><p>Parcourez les titres disponibles.</p></div>
+    </div>
+    <div class="tools"><input id="search" type="search" placeholder="Rechercher un roman ou un auteur…" aria-label="Rechercher un roman"></div>
+    <div class="grid" id="books">
+      <article class="card" data-search="breakout eric junior groude gnon sian thriller">
+        <div class="cover"><div class="cover-inner">BREAKOUT</div></div>
+        <div class="card-body">
+          <h3>Breakout</h3>
+          <p>Un roman de suspense. Ajoutez ici le résumé officiel de votre livre.</p>
+          <div class="price">Prix à définir</div>
+          <div class="actions">
+            <button class="button secondary" onclick="showPreview('Breakout')">Lire un extrait</button>
+            <button class="button" onclick="showPaymentInfo()">Acheter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-search="nouveau roman">
+        <div class="cover"><div class="cover-inner">VOTRE<br>ROMAN</div></div>
+        <div class="card-body">
+          <h3>Votre prochain roman</h3>
+          <p>Cette fiche est un exemple. Vous pourrez la remplacer par un nouveau livre.</p>
+          <div class="price">Prix à définir</div>
+          <div class="actions">
+            <button class="button secondary" onclick="showPreview('Votre prochain roman')">Lire un extrait</button>
+            <button class="button" onclick="showPaymentInfo()">Acheter</button>
+          </div>
+        </div>
+      </article>
+      <article class="card" data-search="bientot nouveauté">
+        <div class="cover"><div class="cover-inner">BIENTÔT</div></div>
+        <div class="card-body">
+          <h3>Bientôt disponible</h3>
+          <p>Annoncez ici vos prochaines publications et nouveautés.</p>
+          <div class="price">À venir</div>
+          <div class="actions"><button class="button secondary" onclick="showPreview('Nouveauté')">En savoir plus</button></div>
+        </div>
+      </article>
+    </div>
+    <div class="notice">Version de démarrage : les fiches et les boutons sont une maquette. Aucun paiement n'est encaissé et aucun fichier n'est encore délivré. Le paiement Wave et la livraison sécurisée seront activés après la configuration du compte marchand et du serveur.</div>
+  </section>
+  <section class="section" id="apropos">
+    <div class="eyebrow">Notre univers</div><h2>Bienvenue chez ERIC BOOKS</h2>
+    <p style="color:var(--muted);line-height:1.7;max-width:720px">Une librairie numérique dédiée aux histoires qui font voyager, réfléchir et vibrer. Découvrez un extrait avant de choisir votre prochaine lecture.</p>
+  </section>
+</main>
+<footer>© <span id="year"></span> ERIC BOOKS — Vos histoires, votre bibliothèque.</footer>
+<dialog id="info">
+  <button class="close" onclick="document.getElementById('info').close()">Fermer</button>
+  <h3 id="modalTitle">Information</h3><p id="modalText"></p>
+</dialog>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  document.getElementById('search').addEventListener('input', function(){
+    const term = this.value.toLowerCase().trim();
+    document.querySelectorAll('#books .card').forEach(card => {
+      card.style.display = card.dataset.search.includes(term) || card.innerText.toLowerCase().includes(term) ? '' : 'none';
+    });
+  });
+  function showPreview(title){
+    document.getElementById('modalTitle').textContent = 'Extrait — ' + title;
+    document.getElementById('modalText').textContent = "L'extrait gratuit de ce roman sera ajouté ici. L'administrateur pourra publier quelques pages pour permettre aux lecteurs de découvrir l'histoire.";
+    document.getElementById('info').showModal();
+  }
+  function showPaymentInfo(){
+    document.getElementById('modalTitle').textContent = 'Paiement bientôt disponible';
+    document.getElementById('modalText').textContent = "La boutique est en cours de construction. Le paiement Wave sera activé après la configuration sécurisée de Wave Checkout. Ne faites aucun transfert pour le moment.";
+    document.getElementById('info').showModal();
+  }
+</script>
+</body>
+</html>
